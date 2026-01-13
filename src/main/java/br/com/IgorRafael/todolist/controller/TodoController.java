@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.IgorRafael.todolist.entity.Todo;
-import br.com.IgorRafael.todolist.service.TodoService;
+import br.com.IgorRafael.todolist.service.TodoServiceCentral;
 import jakarta.validation.Valid;
 
 @RestController
@@ -21,10 +21,10 @@ import jakarta.validation.Valid;
 public class TodoController {
 
 	@Autowired
-	private TodoService todoService;
+	private TodoServiceCentral todoService;
 	
 	
-	@PostMapping(path = "/{nome}/{descricao}/{realizado}/{prioridade}")
+	@PostMapping(path = "/create/{nome}/{descricao}/{realizado}/{prioridade}")
 	List<Todo> create(@Valid 
 		@PathVariable(name = "nome") String nome,
 		@PathVariable(name = "descricao") String descricao, 
@@ -35,20 +35,19 @@ public class TodoController {
 		
 	}	 
 	
-	
 	@GetMapping
 	List<Todo> list(){
-		return todoService.list();
+		return todoService.listTodo() ;
 	}
 	
 	
-	@PutMapping(path ="/{id}")
-    List<Todo> update(@PathVariable("id") Long id, @RequestBody Todo todo){
+	@PutMapping(path ="/update/{id}")
+    Todo update(@PathVariable("id") Integer id, @RequestBody Todo todo){
     	return todoService.update(id, todo);
     }
 	
-    @DeleteMapping(path = "/{id}")
-    List<Todo> delete(@PathVariable("id") Long id){
+    @DeleteMapping(path = "/delete/{id}")
+    List<Todo> delete(@PathVariable("id") Integer id){
 	   return todoService.delete(id);
     }
     
