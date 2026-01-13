@@ -1,5 +1,6 @@
 package br.com.IgorRafael.todolist.entity;
 
+import br.com.IgorRafael.todolist.entity.Enum.Prioridade;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,12 +22,12 @@ public class Todo {
     @NotBlank
 	private String descricao;
 	private boolean realizado;
-	private int prioridade;
+	private Prioridade prioridade;
 	
 	public Todo() {
 	}
 	
-	public Todo(Integer id, @NotBlank String nome, @NotBlank String descricao, boolean realizado, int prioridade) {
+	public Todo(Integer id, @NotBlank String nome, @NotBlank String descricao, boolean realizado, Prioridade prioridade) {
 		this.id = id;
 		this.nome = nome;
 	    this.descricao = descricao;
@@ -35,7 +36,7 @@ public class Todo {
 		
 	}
 	
-	public Todo(String nome, String descricao, boolean realizado, int prioridade) {
+	public Todo(String nome, String descricao, boolean realizado, Prioridade prioridade) {
 		this.nome = nome;
 	    this.descricao = descricao;
 	    this.realizado = realizado;
@@ -68,12 +69,16 @@ public class Todo {
 	public void setRealizado(boolean realizado) {
 		this.realizado = realizado;
 	}
-	public int getPrioridade() {
+
+	public Prioridade getPrioridade() {
 		return prioridade;
 	}
-	public void setPrioridade(int prioridade) {
+
+	public void setPrioridade(Prioridade prioridade) {
 		this.prioridade = prioridade;
 	}
+	
+	
 	
 	
 }

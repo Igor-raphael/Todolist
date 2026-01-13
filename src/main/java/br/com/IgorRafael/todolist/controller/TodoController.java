@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.IgorRafael.todolist.entity.Todo;
+import br.com.IgorRafael.todolist.entity.Enum.Prioridade;
 import br.com.IgorRafael.todolist.service.TodoServiceCentral;
 import jakarta.validation.Valid;
 
@@ -29,7 +30,7 @@ public class TodoController {
 		@PathVariable(name = "nome") String nome,
 		@PathVariable(name = "descricao") String descricao, 
 		@PathVariable(name = "realizado") boolean realizado,
-		@PathVariable(name = "prioridade") int prioridade) {
+		@PathVariable(name = "prioridade") Prioridade prioridade) {
 		Todo todo = new Todo(nome, descricao, realizado, prioridade);
 		return todoService.create(todo);
 		
