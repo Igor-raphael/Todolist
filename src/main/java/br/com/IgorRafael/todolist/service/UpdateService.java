@@ -24,7 +24,7 @@ public class UpdateService {
 			
 		}, () -> {
 			
-			throw new BadRequestException("Todo %d não existe! ".formatted(id));
+			throw new BadRequestException("A tarefa de número: %d, não existe! ".formatted(id));
 			 
 		});
 		
