@@ -1,11 +1,7 @@
 package br.com.IgorRafael.todolist.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.IgorRafael.todolist.entity.Todo;
 import br.com.IgorRafael.todolist.exception.BadRequestException;
 import br.com.IgorRafael.todolist.repository.TodoRepository;
 
@@ -18,22 +14,17 @@ public class DeleteService {
 		this.todoRepository = todoRepository;
 	}
 	
-	@Autowired 
-	private ListService listService;
 	
-	
-	public List<Todo> delete(Integer id) {
+	public void delete(Integer id) {
 		
 		todoRepository.findById(id).ifPresentOrElse(ExisteOTodo -> {
 			todoRepository.delete(ExisteOTodo);
 			
 		}, () -> {
 			
-			throw new BadRequestException("Todo %d não existe! ".formatted(id));
+			throw new BadRequestException("A tarefa de número: %d, não pode ser excluída pois ela não existe!".formatted(id));
 			 
 		});
-		
-		return listService.list();
 	
 	}
 

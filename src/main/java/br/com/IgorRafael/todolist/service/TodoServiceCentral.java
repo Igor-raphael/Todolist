@@ -25,7 +25,7 @@ public class TodoServiceCentral {
 		return listService.list();
 	}
 	
-	public List<Todo> create(Todo todo){
+	public Todo create(Todo todo){
 		return createService.create(todo);
 	}
 		
@@ -33,8 +33,8 @@ public class TodoServiceCentral {
 		return updateService.update(id, todo);
 	}
 	
-	public List<Todo> delete(Integer id){
-		return deleteService.delete(id);
+	public void delete(Integer id){
+		 deleteService.delete(id);
 	}
 	
 	

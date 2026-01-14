@@ -1,6 +1,9 @@
 package br.com.IgorRafael.todolist.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import br.com.IgorRafael.todolist.entity.Enum.Prioridade;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,19 +17,26 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "todo")
 public class Todo {
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@Schema(hidden = true)
 	private Integer id;
 	
+	@Schema(description = "Nome da Tarefa.", example = "Estudar Docker.")
 	@NotBlank
 	private String nome;
 	
+	@Schema(description = "Descrição da Tarefa.", example = "Começar pelo básico.")
     @NotBlank
 	private String descricao;
     
+	@Schema(description = "Indica se a tarefa foi concluida.", example = "true")
     @NotNull
 	private Boolean realizado;
     
+	@Schema(description = "Prioridade da Tarefa.", example = "ALTA")
     @NotNull
 	private Prioridade prioridade;
 	
