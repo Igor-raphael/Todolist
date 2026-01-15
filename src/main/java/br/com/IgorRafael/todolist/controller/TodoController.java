@@ -45,6 +45,23 @@ import jakarta.validation.Valid;
 	            )
 	        )
 	    ),
+	    
+	    @ApiResponse(
+	            responseCode = "409",
+	            description = "Conflito (concorrência).",
+	            content = @Content(
+	                mediaType = "application/json",
+	                examples = @ExampleObject(
+	                    value = """
+	                    {
+	                      "status": 409,
+	                      "error": "Conflict",
+	                      "message": "Ocorreu um problema de concorrência."
+	                    }
+	                    """
+	                )
+	            )
+	        ),
 
 	    @ApiResponse(responseCode = "500", description = "Erro interno.",
 	        content = @Content(
@@ -70,7 +87,6 @@ public class TodoController {
 	
 	@Operation(summary = "Cria tarefa")
 	@PostMapping(path = "/create")
-	@ApiResponse(responseCode = "201", description = "Tarefa criada com sucesso.")
 	Todo create(@Valid @RequestBody Todo todo){
 		return todoService.create(todo);
 	}	 
@@ -85,7 +101,7 @@ public class TodoController {
 
 	@Operation(summary = "Altera a tarefa selecionada.")
 	@PutMapping(path ="/{id}")
-    Todo update(@PathVariable("id") Integer id, @RequestBody Todo todo){
+    Todo update(@PathVariable("id") Integer id, @Valid @RequestBody Todo todo){
     	return todoService.update(id, todo);
     }
 	
