@@ -18,17 +18,15 @@ public class UpdateService {
 	
 		public Todo update(Integer id, Todo todo){
 		
-		todoRepository.findById(id).ifPresentOrElse(ExisteOTodo -> {
-			todo.setId(id);
-			todoRepository.save(todo);
+		Todo Existe = todoRepository.findById(id).orElseThrow(() -> new BadRequestException("A tarefa de número: %d, não existe! ".formatted(id)));
 			
-		}, () -> {
+			Existe.setNome(todo.getNome());
+			Existe.setDescricao(todo.getDescricao());
+			Existe.setRealizado(todo.isRealizado());
+			Existe.setPrioridade(todo.getPrioridade());
 			
-			throw new BadRequestException("A tarefa de número: %d, não existe! ".formatted(id));
-			 
-		});
+			return todoRepository.save(Existe);
 		
-		return todo;
 	}
 	
 }
