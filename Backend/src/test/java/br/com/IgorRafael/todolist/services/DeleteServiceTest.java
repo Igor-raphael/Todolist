@@ -121,22 +121,14 @@ public class DeleteServiceTest {
 				
 				deleteService.delete(id);
 				
-				assertEquals(3, tarefas.size());
-			    assertEquals("Baiano", tarefas.get(0).getNome());
-			    assertEquals("Mathias", tarefas.get(1).getNome());
-			    assertEquals("Nascimento", tarefas.get(2).getNome());
 				
 			});
 			
 			Assertions.assertEquals("A tarefa de número: %d, não pode ser excluída pois ela não existe!".formatted(id), thrown.getMessage());
 			
+			assertEquals(3, tarefas.size());
 			verify(todoRepository, times(1)).findById(id);
 		
 	}
-	
-	
-	
-	
-	
 	
 }
