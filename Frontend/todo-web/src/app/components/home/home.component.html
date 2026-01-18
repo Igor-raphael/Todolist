@@ -1,1 +1,25 @@
-<p>home works!</p>
+<main id="home">
+
+
+  <section class="container">
+
+    <div class="box-task">
+
+      <button class="check"></button>
+
+      <p>Estudar sobre Docker.</p>
+
+
+        <img ngSrc="./assets/icons/arrow.svg" alt="" height="30" width="30" (click)="toggleDescription()" >
+
+        <div class="description" *ngIf="description">
+
+          <p> preciso estudar com foco para termiana o teste tecnico.</p>
+
+        </div>
+    </div>
+
+  </section>
+
+
+</main>
