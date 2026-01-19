@@ -9,14 +9,19 @@
 
       <p>Estudar sobre Docker.</p>
 
-
-        <img ngSrc="./assets/icons/arrow.svg" alt="" height="30" width="30" (click)="toggleDescription()" >
+        <img class="icon" ngSrc="./assets/icons/arrow.svg" alt="arrow" height="30" width="30" (click)="toggleDescription()" >
 
         <div class="description" *ngIf="description">
 
+          <img class="icon" ngSrc="./assets/icons/edit.svg" alt="edit" height="32" width="32">
+
           <p> preciso estudar com foco para termiana o teste tecnico.</p>
+          
+          <img class="icon" ngSrc="./assets/icons/delete.svg" alt="delete" height="30" width="30">
 
         </div>
+
+
     </div>
 
   </section>

@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  min-height: 850px;
+  min-height: 600px;
   padding-bottom: 3rem;
 }
 
@@ -24,7 +24,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 16px;
   padding: 1rem;
   width: 80%;
   background-color: #d9d9d9;
@@ -58,14 +58,25 @@
 
 .description{
   flex: 0  0 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 
   p{
     margin: 0;
   }
 
+  img{
+    margin-top: 2rem;
+    
+  }
+
 }
 
+.icon:hover{
+  transform: translateY(-3px);
+}
 
-.open{
-
+.icon:active{
+  transform: translateY(-1px);
 }
