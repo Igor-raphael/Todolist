@@ -1,1 +1,51 @@
-<p>modal works!</p>
+<div class="modal">
+
+  <form action="#" class="task-form">
+
+    <div class="field">
+
+      <label for="name">Nome da tarefa</label>
+      <input type="text" placeholder="Ex.: Estudar Docker." required>
+
+    </div>
+
+    <div class="field">
+
+      <label for="descricao">Descrição</label>
+      <textarea name="descricao" id="descricao" rows="3" placeholder="Ex.: assistir 1h e fazer anotações"></textarea>
+
+    </div>
+
+    <fieldset class="field">
+
+      <legend> Prioridade</legend>
+
+      <div class="radio-group">
+
+        <label class="radio">
+          <input type="radio" name="prioridade" value="BAIXA" checked>
+          <span></span>
+          <span>Baixa</span>
+        </label>
+
+        <label class="radio">
+          <input type="radio" name="prioridade" value="MEDIA">
+          <span></span>
+          <span>Média</span>
+        </label>
+
+        <label class="radio">
+          <input type="radio" name="prioridade" value="ALTA">
+          <span></span>
+          <span>Alta</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <button class="btn-submit" type="submit"> Criar tarefa</button>
+
+  </form>
+
+</div>
+
+<div class="overlay"></div>
