@@ -1,24 +1,23 @@
-import { NgIf, NgOptimizedImage } from '@angular/common';
+import { NgIf, NgOptimizedImage, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  imports: [NgOptimizedImage, NgIf],
+  imports: [NgOptimizedImage, NgIf, NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 
    description = false;
+   done = false;
 
   toggleDescription(){
     this.description = !this.description;
   }
 
-  if (description = true) {
-
-
-
+  isDone(){
+    this.done = !this.done;
   }
 
 }

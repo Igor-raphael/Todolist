@@ -5,7 +5,7 @@
 
     <div class="box-task">
 
-      <button class="check"></button>
+      <button  [ngClass]="{'is-done' : done}" class="check" (click)="isDone()"></button>
 
       <p>Estudar sobre Docker.</p>
 
@@ -16,7 +16,7 @@
           <img class="icon" ngSrc="./assets/icons/edit.svg" alt="edit" height="32" width="32">
 
           <p> preciso estudar com foco para termiana o teste tecnico.</p>
-          
+
           <img class="icon" ngSrc="./assets/icons/delete.svg" alt="delete" height="30" width="30">
 
         </div>
@@ -24,8 +24,8 @@
   </section>
 
     <button type="submit" class="btn">
-      <span></span>
-      <span></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </button>
 
 
