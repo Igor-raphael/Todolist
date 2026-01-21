@@ -1,5 +1,5 @@
 import { NgIf, NgOptimizedImage, NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -10,8 +10,8 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class HomeComponent {
 
-   description = false;
-   done = false;
+   description: boolean = false;
+   done: boolean = false;
 
   toggleDescription(){
     this.description = !this.description;
@@ -19,6 +19,12 @@ export class HomeComponent {
 
   isDone(){
     this.done = !this.done;
+  }
+
+  @ViewChild(ModalComponent) modal!: ModalComponent;
+
+  showModal(){
+     this.modal.formToggle();
   }
 
 }

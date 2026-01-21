@@ -63,7 +63,8 @@
 }
 
 .field label, legend{
-  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 500;
+  font-size: clamp(18px, 2.4vw, 22px);
 }
 
 #descricao{
@@ -79,12 +80,20 @@
   flex-direction: column;
   gap: 0.5rem;
   padding-top: 1rem;
-  
+
 }
 
 .radio{
+  position: relative;
   display: flex;
+  align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
+
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
 
 }
 
@@ -92,14 +101,82 @@
   border: none;
 }
 
+.radio input[type="radio"]{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-ui{
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+
+  border: 2px solid rgba(0, 0, 0, 0.55);
+  background: transparent;
+
+  display: grid;
+  place-items: center;
+
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.radio-ui::after{
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.92);
+  transform: scale(0);
+  transition: transform 160ms ease;
+}
+
+.radio input[type="radio"]:checked + .radio-ui{
+  border-color: rgba(255,255,255,0.9);
+  transform: scale(1.02);
+}
+
+.radio input[type="radio"]:checked + .radio-ui::after{
+  transform: scale(1);
+}
+
+.radio input[type="radio"]:focus-visible + .radio-ui{
+  outline: 2px solid rgba(255,255,255,0.35);
+  outline-offset: 3px;
+}
+
+.radio-text{
+  font-weight: 400;
+  color: rgba(0, 0, 0);
+}
+
+
 .btn-submit{
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: 999px;
   width: 120px;
   height: 35px;
   align-self: center;
-  
-  border: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.24) ;
+  background: rgba(255,255,255,0.16);
+    color: rgba(0, 0, 0, 0.92);
+
+  font-weight: 600;
+  cursor: pointer;
+
+   transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+
+.btn-submit[type="submit"]:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.34);
+}
+
+.btn-submit[type="submit"]:active{
+  transform: translateY(0px);
 }

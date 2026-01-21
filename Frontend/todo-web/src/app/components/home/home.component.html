@@ -1,4 +1,4 @@
-<app-modal id="modal"></app-modal>
+
 
 <main id="home">
 
@@ -24,7 +24,7 @@
     </div>
   </section>
 
-    <button type="submit" class="btn">
+    <button class="btn" (click)="showModal()">
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
@@ -33,3 +33,4 @@
 </main>
 
 
+<app-modal id="modal"></app-modal>

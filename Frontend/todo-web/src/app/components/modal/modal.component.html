@@ -1,4 +1,4 @@
-<div class="modal">
+<div class="modal" *ngIf="showForm">
 
   <form action="#" class="task-form">
 
@@ -24,28 +24,29 @@
 
         <label class="radio">
           <input type="radio" name="prioridade" value="BAIXA" checked>
-          <span></span>
-          <span>Baixa</span>
+          <span class="radio-ui"></span>
+          <span class="radio-text">Baixa</span>
         </label>
 
         <label class="radio">
           <input type="radio" name="prioridade" value="MEDIA">
-          <span></span>
-          <span>Média</span>
+          <span class="radio-ui"></span>
+          <span class="radio-text">Média</span>
         </label>
 
         <label class="radio">
           <input type="radio" name="prioridade" value="ALTA">
-          <span></span>
-          <span>Alta</span>
+          <span class="radio-ui"></span>
+          <span class="radio-text">Alta</span>
         </label>
       </div>
     </fieldset>
 
-    <button class="btn-submit" type="submit"> Criar tarefa</button>
+
+    <button class="btn-submit" type="submit" (click)="formToggle()" > Criar tarefa</button>
 
   </form>
 
 </div>
 
-<div class="overlay"></div>
+<div *ngIf="overlay" (click)="formToggle()" class="overlay" ></div>
