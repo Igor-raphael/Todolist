@@ -4,8 +4,8 @@
 
     <div class="field">
 
-      <label for="name">Nome da tarefa*</label>
-      <input [(ngModel)]="text" type="text" name="tarefa" maxlength="30" placeholder="Ex.: Estudar Docker." required>
+      <label for="name">Nome da tarefa</label>
+      <input type="text" maxlength="30" placeholder="Ex.: Estudar Docker." required>
 
     </div>
 
@@ -43,7 +43,7 @@
     </fieldset>
 
 
-    <button class="btn-submit" type="submit" [disabled]="isLiberado()" (click)="formToggle()"  > Criar tarefa</button>
+    <button class="btn-submit" type="submit" (click)="formToggle()" > Criar tarefa</button>
 
   </form>
 
