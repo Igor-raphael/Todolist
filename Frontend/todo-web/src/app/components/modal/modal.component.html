@@ -1,0 +1,52 @@
+<div class="modal" *ngIf="showForm">
+
+  <form action="#" class="task-form">
+
+    <div class="field">
+
+      <label for="name">Nome da tarefa</label>
+      <input type="text" name="tarefa" [(ngModel)]="text" maxlength="30" placeholder="Ex.: Estudar Docker." required>
+
+    </div>
+
+    <div class="field">
+
+      <label for="descricao">Descrição</label>
+      <textarea name="descricao" id="descricao" rows="3" maxlength="80" placeholder="Ex.: assistir 1h e fazer anotações"></textarea>
+
+    </div>
+
+    <fieldset class="field">
+
+      <legend> Prioridade</legend>
+
+      <div class="radio-group">
+
+        <label class="radio">
+          <input type="radio" name="prioridade" value="BAIXA" checked>
+          <span class="radio-ui"></span>
+          <span class="radio-text">Baixa</span>
+        </label>
+
+        <label class="radio">
+          <input type="radio" name="prioridade" value="MEDIA">
+          <span class="radio-ui"></span>
+          <span class="radio-text">Média</span>
+        </label>
+
+        <label class="radio">
+          <input type="radio" name="prioridade" value="ALTA">
+          <span class="radio-ui"></span>
+          <span class="radio-text">Alta</span>
+        </label>
+      </div>
+    </fieldset>
+
+
+    <button class="btn-submit" [disabled]="!isLiberado()" type="submit" (click)="formToggle()" > Criar tarefa</button>
+
+  </form>
+
+</div>
+
+<div *ngIf="overlay" (click)="formToggle()" class="overlay" ></div>
