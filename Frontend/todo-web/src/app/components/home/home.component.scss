@@ -156,6 +156,12 @@
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
+@media(min-width: 600px){
+ #home{
+  background-image: url("/assets/mazda.jpg");
+ }
+}
+
 @media(min-width: 700px){
   .box-task{
     width: 70%;
