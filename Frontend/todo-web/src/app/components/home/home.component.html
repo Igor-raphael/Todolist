@@ -8,15 +8,15 @@
 
     <div class="box-task" *ngFor="let t of tarefas" >
 
-      <button  [ngClass]="{'is-done' : done}" class="check" (click)="isDone()"></button>
+      <button  [ngClass]="{'is-done' : t.realizado}" class="check" (click)="isDone(t)"></button>
 
       <p>
           {{t.nome}}
       </p>
 
-        <img class="icon" ngSrc="./assets/icons/arrow.svg" alt="arrow" height="30" width="30" (click)="toggleDescription()" >
+        <img class="icon" ngSrc="./assets/icons/arrow.svg" alt="arrow" height="30" width="30" (click)="toggleDescription(t.id)" >
 
-        <div class="description" *ngIf="description">
+        <div class="description" *ngIf="descriptionID === t.id">
 
           <img class="icon" ngSrc="./assets/icons/edit.svg" alt="edit" height="32" width="32">
 

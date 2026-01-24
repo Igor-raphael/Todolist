@@ -3,7 +3,7 @@ export type Prioridade = 'BAIXA' | 'MEDIA' | 'ALTA';
 
 export interface Tarefas {
 
-  _id : number;
+  id : number;
   nome : string;
   descricao: string;
   realizado: boolean;

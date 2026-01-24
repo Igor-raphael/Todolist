@@ -23,16 +23,18 @@ export class HomeComponent {
   }
 
 
-   description: boolean = false;
-   done: boolean = false;
+   descriptionID: number | null = null;
+   doneID: number | null = null;
+   check: boolean = false;
 
-  toggleDescription(){
-    this.description = !this.description;
+  toggleDescription(id: number){
+
+    this.descriptionID = (this.descriptionID === id) ? null : id;
   }
 
-  isDone(){
-    this.done = !this.done;
-  }
+  isDone(t: Tarefas){
+      t.realizado = !t.realizado;
+}
 
   @ViewChild(ModalComponent) modal!: ModalComponent;
 
