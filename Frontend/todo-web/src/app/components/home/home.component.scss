@@ -1,3 +1,4 @@
+
 #home {
   display: flex;
   justify-content: center;
@@ -5,6 +6,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
   min-height: 100vh;
   padding-bottom: 3rem;
 }
@@ -16,8 +18,8 @@
   align-items: center;
   gap: 2.5rem;
   width: 100vw;
-  height: 75vh;
-  overflow: scroll;
+  height: 77vh;
+  overflow-y: auto;
 }
 
 .box-task {
@@ -26,8 +28,8 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 1rem;
-  width: 90%;
+  padding: 0.8rem;
+  width: 95%;
   background: rgba(217, 217, 217, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(12px);
@@ -82,8 +84,6 @@
     transform: translate(-50%, -55%) rotate(-45deg);
   }
 
-
-
   p {
     font-size: clamp(16px, 2vw, 24px);
     font-weight: 600;
@@ -108,7 +108,9 @@
   p {
     font-size: clamp(18px, 2vw, 26px);
     font-weight: 500;
-    margin: 0;
+    margin: 0 2rem;
+    align-self: center;
+
   }
 
   img {
@@ -159,6 +161,13 @@
 }
 
 @media(min-width: 700px){
+
+  .container{
+      gap: 3.5rem;
+      height: auto;
+
+  }
+
   .box-task{
     width: 70%;
   }
@@ -170,6 +179,13 @@
 }
 
 @media(min-width: 1000px){
+
+  .container{
+      gap: 4.5rem;
+
+
+  }
+
   .box-task{
     width: 60%;
   }
@@ -181,6 +197,12 @@
 }
 
 @media(min-width: 1300px){
+
+  .container{
+    gap: 5.5rem;
+
+  }
+
   .box-task{
     width: 50%;
   }
