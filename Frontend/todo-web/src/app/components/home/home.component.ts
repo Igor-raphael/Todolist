@@ -24,8 +24,6 @@ export class HomeComponent {
 
 
    descriptionID: number | null = null;
-   doneID: number | null = null;
-   check: boolean = false;
 
   toggleDescription(id: number){
 
@@ -40,6 +38,20 @@ export class HomeComponent {
 
   showModal(){
      this.modal.formToggle();
+  }
+
+  transPrioridade(t: Tarefas['prioridade']): string{
+
+    if(t === "ALTA"){
+      return "Alta";
+
+    }else if(t === "MEDIA"){
+        return "Média";
+
+      }else{
+        return "Baixa";
+      }
+
   }
 
 }
