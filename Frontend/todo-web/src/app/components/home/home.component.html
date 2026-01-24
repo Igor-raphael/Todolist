@@ -4,7 +4,7 @@
 
     <ng-container *ngIf="tarefas$ | async as tarefas; else loading">
 
-        <div class="box-task" *ngFor="let t of tarefas">
+        <div class="box-task" [ngClass]="transPrioridade(t.prioridade)" *ngFor="let t of tarefas">
 
           <button [ngClass]="{'is-done' : t.realizado}" class="check" (click)="isDone(t)"></button>
 

@@ -1,4 +1,3 @@
-
 #home {
   display: flex;
   justify-content: center;
@@ -25,6 +24,8 @@
 .box-task {
   display: flex;
   justify-content: space-between;
+  position: relative;
+  overflow: hidden;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
@@ -55,24 +56,22 @@
     transition:
       border-color 0.2s ease,
       transform 0.12s ease;
-
   }
 
-  .check:hover{
+  .check:hover {
     transform: translateY(-3px);
   }
 
-  .check:active{
+  .check:active {
     transform: translateY(0px);
   }
 
-
-  .is-done{
-    border-color: rgba(80,255,16,.9) ;
-    background: rgba(80,255,16,.9);
+  .is-done {
+    border-color: rgba(80, 255, 16, 0.9);
+    background: rgba(80, 255, 16, 0.9);
   }
 
-  .is-done::after{
+  .is-done::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -99,6 +98,47 @@
   }
 }
 
+.box-task::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.box-task > *{
+  position: relative;
+  z-index: 1;
+}
+
+.box-task.Alta::after {
+  opacity: 1;
+  background: linear-gradient(
+    340deg,
+    rgba(240, 43, 43) 0%,
+    rgba(240, 43, 43, 0.00) 25%
+  );
+}
+
+.box-task.Média::after {
+  opacity: 1;
+  background: linear-gradient(
+    340deg,
+    rgb(250, 159, 1) 0%,
+    rgba(250, 159, 1, 0.00) 25%
+  );
+}
+
+.box-task.Baixa::after {
+  opacity: 1;
+  background: linear-gradient(
+    340deg,
+    rgb(26, 202, 91) 0%,
+    rgba(26, 202, 91, 0.00) 25%
+  );
+}
+
 .description {
   flex: 0 0 100%;
   display: flex;
@@ -110,7 +150,6 @@
     font-weight: 500;
     margin: 0 2rem;
     align-self: center;
-
   }
 
   img {
@@ -160,55 +199,49 @@
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-@media(min-width: 700px){
-
-  .container{
-      gap: 3.5rem;
-      height: auto;
-
+@media (min-width: 700px) {
+  #home {
+    background-image: url("/assets/mazda.jpg");
   }
 
-  .box-task{
+  .container {
+    gap: 3.5rem;
+    height: auto;
+  }
+
+  .box-task {
     width: 70%;
   }
 
-  .btn{
-   top: 53.5px;
+  .btn {
+    top: 53px;
   }
-
 }
 
-@media(min-width: 1000px){
-
-  .container{
-      gap: 4.5rem;
-
-
+@media (min-width: 1000px) {
+  .container {
+    gap: 4.5rem;
   }
 
-  .box-task{
+  .box-task {
     width: 60%;
   }
 
-  .btn{
+  .btn {
     right: 10vw;
   }
-
 }
 
-@media(min-width: 1300px){
-
-  .container{
+@media (min-width: 1300px) {
+  .container {
     gap: 5.5rem;
-
   }
 
-  .box-task{
+  .box-task {
     width: 50%;
   }
 
-  .btn{
+  .btn {
     right: 17vw;
   }
-
 }

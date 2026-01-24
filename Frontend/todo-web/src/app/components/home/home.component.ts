@@ -43,13 +43,13 @@ export class HomeComponent {
   transPrioridade(t: Tarefas['prioridade']): string{
 
     if(t === "ALTA"){
-      return "Alta";
+      return 'Alta';
 
     }else if(t === "MEDIA"){
-        return "Média";
+        return 'Média';
 
       }else{
-        return "Baixa";
+        return 'Baixa';
       }
 
   }
