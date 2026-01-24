@@ -4,11 +4,15 @@
 
   <section class="container">
 
-    <div class="box-task">
+    <ng-container *ngIf="tarefas$ | async as tarefas; else loading" >
+
+    <div class="box-task" *ngFor="let t of tarefas" >
 
       <button  [ngClass]="{'is-done' : done}" class="check" (click)="isDone()"></button>
 
-      <p>Estudar sobre Docker.</p>
+      <p>
+          {{t.nome}}
+      </p>
 
         <img class="icon" ngSrc="./assets/icons/arrow.svg" alt="arrow" height="30" width="30" (click)="toggleDescription()" >
 
@@ -16,12 +20,16 @@
 
           <img class="icon" ngSrc="./assets/icons/edit.svg" alt="edit" height="32" width="32">
 
-          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur tincidunt enim eu varius.</p>
-
+          <p>
+            {{ t.descricao }}
+          </p>
           <img class="icon" ngSrc="./assets/icons/delete.svg" alt="delete" height="30" width="30">
 
         </div>
     </div>
+
+    </ng-container>
+
   </section>
 
     <button class="btn" (click)="showModal()">
@@ -29,8 +37,14 @@
       <span class="bar"></span>
     </button>
 
+<ng-template #loading>
+
+  <p>Carregando....</p>
+
+</ng-template>
 
 </main>
+
 
 
 <app-modal id="modal"></app-modal>
