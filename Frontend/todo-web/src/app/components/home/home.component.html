@@ -4,24 +4,29 @@
 
     <ng-container *ngIf="tarefas$ | async as tarefas; else loading">
 
-        <div class="box-task" [ngClass]="transPrioridade(t.prioridade)" *ngFor="let t of tarefas">
+      <div class="box-task" [ngClass]="transPrioridade(t.prioridade)" *ngFor="let t of tarefas">
 
-          <button [ngClass]="{'is-done' : t.realizado}" class="check" (click)="isDone(t)"></button>
+        <button [ngClass]="{'is-done' : t.realizado}" class="check" (click)="isDone(t)"></button>
 
-          <p>{{t.nome}}</p>
+        <p>{{t.nome}}</p>
 
-          <img class="icon" ngSrc="./assets/icons/arrow.svg" alt="arrow" height="30" width="30"
-            (click)="toggleDescription(t.id)">
+        <img class="icon" ngSrc="./assets/icons/arrow.svg" alt="arrow" height="30" width="30"
+          (click)="toggleDescription(t.id)">
 
-          <div class="description" *ngIf="descriptionID === t.id">
+        <div class="description" *ngIf="descriptionID === t.id">
 
-            <img class="icon" ngSrc="./assets/icons/edit.svg" alt="edit" height="32" width="32">
+          <img class="icon" ngSrc="./assets/icons/edit.svg" alt="edit" height="32" width="32">
 
+          <div class="desc-content">
             <p>{{ t.descricao }}</p>
-            <img class="icon" ngSrc="./assets/icons/delete.svg" alt="delete" height="30" width="30">
-
+            <span class="priority"> Prioridade: <strong>{{transPrioridade(t.prioridade)}}</strong></span>
           </div>
+
+          <img class="icon" ngSrc="./assets/icons/delete.svg" alt="delete" height="30" width="30">
+
+
         </div>
+      </div>
 
     </ng-container>
 
