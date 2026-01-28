@@ -1,7 +1,7 @@
 import { NgOptimizedImage, CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
-import { ListService } from '../../services/list-service';
+import { ListService } from '../../services/list/list-service';
 import { Observable } from 'rxjs';
 import { Tarefas } from '../../model/tarefas';
 

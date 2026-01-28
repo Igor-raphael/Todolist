@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Tarefas } from '../model/tarefas';
+import { Tarefas } from '../../model/tarefas';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class ListService {
 
-  //private readonly API = 'http://localhost:8080/todos';
+  private readonly API = '/todos';
 
-  private readonly API = '/assets/test.json';
+  //private readonly API = '/assets/test.json';
 
   constructor(private httpClient: HttpClient) {}
 
