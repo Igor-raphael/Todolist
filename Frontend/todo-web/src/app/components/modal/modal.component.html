@@ -1,18 +1,18 @@
 <div class="modal" *ngIf="showForm">
 
-  <form action="#" class="task-form">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)"  class="task-form">
 
     <div class="field">
 
       <label for="name">Nome da tarefa</label>
-      <input type="text" name="tarefa" [(ngModel)]="text" maxlength="30" placeholder="Ex.: Estudar Docker." required>
+      <input type="text" name="tarefa" [(ngModel)]="tarefa" maxlength="30" placeholder="Ex.: Estudar Docker." required>
 
     </div>
 
     <div class="field">
 
       <label for="descricao">Descrição</label>
-      <textarea name="descricao" id="descricao" rows="3" maxlength="80" placeholder="Ex.: assistir 1h e fazer anotações"></textarea>
+      <textarea name="descricao" [(ngModel)]="descricao" id="descricao" rows="3" maxlength="80" placeholder="Ex.: assistir 1h e fazer anotações"></textarea>
 
     </div>
 
@@ -23,7 +23,7 @@
       <div class="radio-group">
 
         <label class="radio">
-          <input type="radio" name="prioridade" value="BAIXA" checked>
+          <input type="radio" name="prioridade" [(ngModel)]="prioridades.prioridade" value="BAIXA">
           <span class="radio-ui"></span>
           <span class="radio-text">Baixa</span>
         </label>
