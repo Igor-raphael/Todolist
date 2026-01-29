@@ -29,7 +29,6 @@ public class Todo {
 	private String nome;
 	
 	@Schema(description = "Descrição da Tarefa.", example = "Começar pelo básico.")
-    @NotBlank
 	private String descricao;
     
 	@Schema(description = "Indica se a tarefa foi concluida.", example = "true")
@@ -43,7 +42,7 @@ public class Todo {
 	public Todo() {
 	}
 	
-	public Todo(Integer id, @NotBlank String nome, @NotBlank String descricao, boolean realizado, Prioridade prioridade) {
+	public Todo(Integer id, @NotBlank String nome, String descricao, boolean realizado, Prioridade prioridade) {
 		this.id = id;
 		this.nome = nome;
 	    this.descricao = descricao;
@@ -52,7 +51,7 @@ public class Todo {
 		
 	}
 	
-	public Todo(String nome, String descricao, boolean realizado, Prioridade prioridade) {
+	public Todo(@NotBlank String nome, String descricao, boolean realizado, Prioridade prioridade) {
 		this.nome = nome;
 	    this.descricao = descricao;
 	    this.realizado = realizado;
