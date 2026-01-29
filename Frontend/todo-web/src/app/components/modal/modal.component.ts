@@ -1,11 +1,9 @@
-import { Tarefas } from './../../model/tarefas';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { TarefaDTO} from '../../model/TarefaDTO';
 import { CreateService } from '../../services/create/create.service';
 import { ListService } from '../../services/list/list-service';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -28,12 +26,7 @@ export class ModalComponent {
       prioridade: 'BAIXA' as 'BAIXA' | 'MEDIA' | 'ALTA'
    }
 
-
-   tarefas$!: Observable<Tarefas[]>;
-
-   loadList(){
-      this.tarefas$ = this.listService.list();
-   }
+   @Output() created = new EventEmitter<void>();
 
    onSubmit(form: NgForm){
     if (form.invalid) return;
@@ -48,21 +41,22 @@ export class ModalComponent {
 
    this.createService.create(payload).subscribe({
 
-    next: () => this.loadList()
+    next: () => {
 
-   })
+      this.created.emit();
+      form.resetForm({prioridade: 'BAIXA'});
+      this.formToggle();
+
+
+    }
+
+   });
 
    }
 
   formToggle(){
     this.showForm = !this.showForm;
     this.overlay = !this.overlay;
-  }
-
-  isLiberado(): boolean{
-
-   return this.tarefa.trim().length > 0;
-
   }
 
 }

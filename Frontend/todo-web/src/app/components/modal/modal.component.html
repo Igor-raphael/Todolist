@@ -43,7 +43,7 @@
     </fieldset>
 
 
-    <button class="btn-submit" [disabled]="!isLiberado()" type="submit" (click)="formToggle()" > Criar tarefa</button>
+    <button class="btn-submit" [disabled]="form.invalid" type="submit"  > Criar tarefa</button>
 
   </form>
 
