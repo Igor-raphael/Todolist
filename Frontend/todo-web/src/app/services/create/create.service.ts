@@ -8,7 +8,7 @@ import { TarefaDTO } from '../../model/TarefaDTO';
 })
 export class CreateService {
 
-  private readonly API = '/create';
+  private readonly API = '/todos/create';
 
   constructor(private httpClient: HttpClient) { }
 

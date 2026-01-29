@@ -54,4 +54,8 @@ export class HomeComponent {
 
   }
 
+  reloadList(){
+    this.tarefas$ = this.listService.list();
+  }
+
 }
