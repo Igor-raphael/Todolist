@@ -22,7 +22,7 @@
             <span class="priority"> Prioridade: <strong>{{transPrioridade(t.prioridade)}}</strong></span>
           </div>
 
-          <img class="icon" ngSrc="./assets/icons/delete.svg" alt="delete" height="30" width="30">
+          <img class="icon" ngSrc="./assets/icons/delete.svg" alt="delete" height="30" width="30" (click)="deletePorId(t.id)">
 
 
         </div>

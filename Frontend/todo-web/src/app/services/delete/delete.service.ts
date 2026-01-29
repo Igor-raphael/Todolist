@@ -1,3 +1,4 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,14 @@ import { Injectable } from '@angular/core';
 })
 export class DeleteService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  private readonly API = '/todos';
+
+  delete(id: number){
+
+    return this.httpClient.delete<void>(`${this.API}/${id}`);
+
+  }
+
 }
