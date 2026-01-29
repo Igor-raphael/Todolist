@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Tarefas } from '../../model/tarefas';
 import { TarefaDTO } from '../../model/TarefaDTO';
 
 @Injectable({
