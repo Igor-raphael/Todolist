@@ -15,7 +15,7 @@
 
         <div class="description" *ngIf="descriptionID === t.id">
 
-          <img class="icon" ngSrc="./assets/icons/edit.svg" alt="edit" height="32" width="32">
+          <img class="icon" ngSrc="./assets/icons/edit.svg" alt="edit" height="32" width="32" (click)="update(t)">
 
           <div class="desc-content">
             <p>{{ t.descricao }}</p>
@@ -32,7 +32,7 @@
 
   </section>
 
-  <button class="btn" (click)="showModal()">
+  <button class="btn" (click)="createTarefa()">
     <span class="bar"></span>
     <span class="bar"></span>
   </button>

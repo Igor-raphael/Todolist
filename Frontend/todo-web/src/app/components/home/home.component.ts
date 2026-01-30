@@ -11,70 +11,58 @@ import { DeleteService } from '../../services/delete/delete.service';
   standalone: true,
   imports: [NgOptimizedImage, ModalComponent, CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-
   tarefas$: Observable<Tarefas[]>;
-
-  constructor( private listService: ListService, private deleteService: DeleteService){
-
-    this.tarefas$ = this.listService.list();
-
-  }
-
-
-  reloadList(){
-    this.tarefas$ = this.listService.list();
-  }
-
-
-    deletePorId(id: number){
-      this.deleteService.delete(id).subscribe({
-        next: () => this.reloadList()
-      });
-
-    }
-
-   descriptionID: number | null = null;
-
-  toggleDescription(id: number){
-
-    this.descriptionID = (this.descriptionID === id) ? null : id;
-  }
-
-
-  isDone(t: Tarefas){
-      t.realizado = !t.realizado;
-}
-
-
 
   @ViewChild(ModalComponent) modal!: ModalComponent;
 
-  showModal(){
-     this.modal.formToggle();
+  constructor(
+    private listService: ListService,
+    private deleteService: DeleteService,
+  ) {
+    this.tarefas$ = this.listService.list();
   }
 
-  update(tarefa: Tarefas){
-    this.modal.showModalUpdate(tarefa);
+  reloadList() {
+    this.tarefas$ = this.listService.list();
   }
 
 
+  deletePorId(id: number) {
+    this.deleteService.delete(id).subscribe({
+      next: () => this.reloadList(),
+    });
+  }
 
-  transPrioridade(t: Tarefas['prioridade']): string{
 
-    if(t === "ALTA"){
+  update(t: Tarefas) {
+    this.modal.editTarefa(t);
+  }
+
+  createTarefa(){
+    this.modal.createTarefa();
+  }
+
+
+  descriptionID: number | null = null;
+
+  toggleDescription(id: number) {
+    this.descriptionID = this.descriptionID === id ? null : id;
+  }
+
+  isDone(t: Tarefas) {
+    t.realizado = !t.realizado;
+  }
+
+  transPrioridade(t: Tarefas['prioridade']): string {
+    if (t === 'ALTA') {
       return 'Alta';
-
-    }else if(t === "MEDIA"){
-        return 'Média';
-
-      }else{
-        return 'Baixa';
-      }
-
+    } else if (t === 'MEDIA') {
+      return 'Média';
+    } else {
+      return 'Baixa';
+    }
   }
-
-
 }

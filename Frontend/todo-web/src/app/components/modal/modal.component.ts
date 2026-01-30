@@ -33,6 +33,33 @@ export class ModalComponent {
 
    @Output() created = new EventEmitter<void>();
 
+    mode: 'create' | 'edit' = 'create';
+
+   get submitLabel(): string {
+    return this.mode === 'edit' ? 'Alterar tarefa' : 'Criar Tarefa';
+   }
+
+   createTarefa(){
+    this.mode = 'create';
+    this.EditID = null;
+    this.tarefa = '';
+    this.descricao = '';
+    this.prioridades.prioridade = 'BAIXA';
+    this.formToggle();
+
+   }
+
+
+   editTarefa(t: Tarefas){
+    this.mode = 'edit';
+    this.EditID = t.id;
+    this.tarefa = t.nome;
+    this.descricao = t.descricao;
+    this.prioridades.prioridade = t.prioridade;
+    this.formToggle();
+   }
+
+
    onSubmit(form: NgForm){
     if (form.invalid) return;
 
@@ -67,7 +94,14 @@ export class ModalComponent {
     };
 
 
-      this.updateService.update(this.EditID,payloadUpdate)
+      this.updateService.update(this.EditID,payloadUpdate).subscribe({
+
+        next: () => {
+          this.formToggle()
+        }
+
+
+      })
 
 
   }
