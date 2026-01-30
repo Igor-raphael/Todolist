@@ -56,6 +56,10 @@ export class HomeComponent {
      this.modal.formToggle();
   }
 
+  update(tarefa: Tarefas){
+    this.modal.showModalUpdate(tarefa);
+  }
+
 
 
   transPrioridade(t: Tarefas['prioridade']): string{
