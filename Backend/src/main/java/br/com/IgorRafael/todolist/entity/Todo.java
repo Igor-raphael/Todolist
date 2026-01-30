@@ -59,6 +59,13 @@ public class Todo {
 		
 	}
 	
+	public Todo(@NotBlank String nome, String descricao, Prioridade prioridade) {
+		this.nome = nome;
+	    this.descricao = descricao;
+	    this.prioridade = prioridade;
+		
+	}
+	
 	
 	public Integer getId() {
 		return id;

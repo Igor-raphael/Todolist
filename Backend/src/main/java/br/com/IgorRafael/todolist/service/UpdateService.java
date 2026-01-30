@@ -22,7 +22,6 @@ public class UpdateService {
 			
 			Existe.setNome(todo.getNome());
 			Existe.setDescricao(todo.getDescricao());
-			Existe.setRealizado(todo.isRealizado());
 			Existe.setPrioridade(todo.getPrioridade());
 			
 			return todoRepository.save(Existe);

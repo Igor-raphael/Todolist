@@ -5,6 +5,7 @@ import { TarefaDTO} from '../../model/TarefaDTO';
 import { CreateService } from '../../services/create/create.service';
 import { ListService } from '../../services/list/list-service';
 import { Tarefas } from '../../model/tarefas';
+import { UpdateService } from '../../services/update/update.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { Tarefas } from '../../model/tarefas';
 })
 export class ModalComponent {
 
-  constructor(private createService: CreateService, private listService: ListService){}
+  constructor(private createService: CreateService, private listService: ListService, private updateService: UpdateService){}
 
   showForm: boolean = false;
   overlay: boolean = false;
@@ -24,6 +25,7 @@ export class ModalComponent {
 
   tarefa: string = '';
   descricao: string = '';
+  realizado: boolean = false;
 
    prioridades = {
       prioridade: 'BAIXA' as 'BAIXA' | 'MEDIA' | 'ALTA'
@@ -36,7 +38,7 @@ export class ModalComponent {
 
     if(this.EditID === null){
 
-    const payload: TarefaDTO = {
+    const payloadCreate: TarefaDTO = {
       nome: form.value.tarefa,
       descricao: form.value.descricao,
       realizado: false,
@@ -44,7 +46,7 @@ export class ModalComponent {
 
    }
 
-   this.createService.create(payload).subscribe({
+   this.createService.create(payloadCreate).subscribe({
 
     next: () => {
 
@@ -57,12 +59,15 @@ export class ModalComponent {
 
   } else{
     const payloadUpdate = {
+      id: this.EditID,
       nome: this.tarefa,
       descricao: this.descricao,
+      realizado: this.realizado,
       prioridade: this.prioridades.prioridade
     };
 
 
+      this.updateService.update(this.EditID,payloadUpdate)
 
 
   }
