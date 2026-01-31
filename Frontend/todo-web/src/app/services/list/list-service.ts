@@ -15,7 +15,7 @@ export class ListService {
   constructor(private httpClient: HttpClient) {}
 
 list(): Observable<Tarefas[]>{
-  return this.httpClient.get<Tarefas[]>(this.API).pipe(delay(5000));
+  return this.httpClient.get<Tarefas[]>(this.API);
   }
 
 }

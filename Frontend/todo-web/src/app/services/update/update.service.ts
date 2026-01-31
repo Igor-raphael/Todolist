@@ -15,4 +15,8 @@ export class UpdateService {
    return this.httpClient.put<Tarefas>(`${this.API}/${id}`, tarefas);
 
   }
+
+  checkUpdate(id: number, realizado: boolean){
+    return this.httpClient.put<void>(`${this.API}/${id}/realizado`, {realizado});
+  }
 }

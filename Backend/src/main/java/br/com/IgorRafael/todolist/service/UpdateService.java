@@ -27,5 +27,16 @@ public class UpdateService {
 			return todoRepository.save(Existe);
 		
 	}
+		
+		public void check(Integer id, boolean realizado) {
+			
+			Todo Existe = todoRepository.findById(id).orElseThrow(() -> new BadRequestException("A tarefa de número: %d, não existe! ".formatted(id)));
+			
+			Existe.setRealizado(realizado);
+			
+			todoRepository.save(Existe);
+			
+		}
+		
 	
 }

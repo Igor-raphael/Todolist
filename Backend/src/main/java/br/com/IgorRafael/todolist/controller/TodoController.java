@@ -1,6 +1,7 @@
 package br.com.IgorRafael.todolist.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -104,6 +105,15 @@ public class TodoController {
     Todo update(@PathVariable("id") Integer id, @Valid @RequestBody Todo todo){
     	return todoService.update(id, todo);
     }
+	
+	@Operation(summary = "Altera a conclusão da tarefa selecionada.")
+	@PutMapping(path = "/{id}/realizado")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	void updateCheck(@PathVariable("id") Integer id, @RequestBody Map<String, Boolean> body) {
+		
+		todoService.checkUpdate(id, body.get("realizado"));
+		
+	}
 	
 	
 	@Operation(summary = "Deleta a tarefa selecionada.")

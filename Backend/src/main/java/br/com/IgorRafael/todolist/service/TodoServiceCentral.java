@@ -33,6 +33,10 @@ public class TodoServiceCentral {
 		return updateService.update(id, todo);
 	}
 	
+	public void checkUpdate(Integer id, boolean realizado ) {
+		updateService.check(id, realizado);
+	}
+	
 	public void delete(Integer id){
 		 deleteService.delete(id);
 	}
