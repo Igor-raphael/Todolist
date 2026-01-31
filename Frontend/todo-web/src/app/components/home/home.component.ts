@@ -5,6 +5,7 @@ import { ListService } from '../../services/list/list-service';
 import { delay, Observable } from 'rxjs';
 import { Tarefas } from '../../model/tarefas';
 import { DeleteService } from '../../services/delete/delete.service';
+import { UpdateService } from '../../services/update/update.service';
 
 @Component({
   selector: 'app-home',
@@ -21,12 +22,12 @@ export class HomeComponent {
   constructor(
     private listService: ListService,
     private deleteService: DeleteService,
+    private updateService: UpdateService
   ) {
     this.tarefas$ = this.listService.list();
   }
 
   reloadList() {
-    delay(5000);
     this.tarefas$ = this.listService.list();
   }
 
@@ -51,7 +52,18 @@ export class HomeComponent {
   }
 
   isDone(t: Tarefas) {
-    t.realizado = !t.realizado;
+
+    const novoRealizado = !t.realizado;
+
+    this.updateService.checkUpdate(t.id, novoRealizado).subscribe({
+      next: () => {
+        this.reloadList();
+      },
+      error: () => {
+        t.realizado = !novoRealizado;
+      }
+    });
+
   }
 
   transPrioridade(t: Tarefas['prioridade']): string {
