@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Tarefas } from '../../model/tarefas';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class ListService {
   constructor(private httpClient: HttpClient) {}
 
 list(): Observable<Tarefas[]>{
-    return this.httpClient.get<Tarefas[]>(this.API);
+  return this.httpClient.get<Tarefas[]>(this.API).pipe(delay(5000));
   }
 
 }

@@ -2,7 +2,7 @@ import { NgOptimizedImage, CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 import { ListService } from '../../services/list/list-service';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { Tarefas } from '../../model/tarefas';
 import { DeleteService } from '../../services/delete/delete.service';
 
@@ -26,9 +26,9 @@ export class HomeComponent {
   }
 
   reloadList() {
+    delay(5000);
     this.tarefas$ = this.listService.list();
   }
-
 
   deletePorId(id: number) {
     this.deleteService.delete(id).subscribe({
@@ -36,15 +36,13 @@ export class HomeComponent {
     });
   }
 
-
   update(t: Tarefas) {
     this.modal.editTarefa(t);
   }
 
-  createTarefa(){
+  createTarefa() {
     this.modal.createTarefa();
   }
-
 
   descriptionID: number | null = null;
 

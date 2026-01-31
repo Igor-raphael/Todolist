@@ -1,6 +1,6 @@
 <div class="modal" *ngIf="showForm">
 
-  <form #form="ngForm" (ngSubmit)="onSubmit(form)"  class="task-form">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="task-form">
 
     <div class="field">
 
@@ -12,7 +12,8 @@
     <div class="field">
 
       <label for="descricao">Descrição</label>
-      <textarea name="descricao" [(ngModel)]="descricao" id="descricao" rows="3" maxlength="80" placeholder="Ex.: assistir 1h e fazer anotações"></textarea>
+      <textarea name="descricao" [(ngModel)]="descricao" id="descricao" rows="3" maxlength="80"
+        placeholder="Ex.: assistir 1h e fazer anotações"></textarea>
 
     </div>
 
@@ -43,10 +44,10 @@
     </fieldset>
 
 
-    <button class="btn-submit" [disabled]="form.invalid" type="submit"  >{{submitLabel}}</button>
+    <button class="btn-submit" [disabled]="form.invalid" type="submit">{{submitLabel}}</button>
 
   </form>
 
 </div>
 
-<div *ngIf="overlay" (click)="formToggle()" class="overlay" ></div>
+<div *ngIf="overlay" (click)="formToggle()" class="overlay"></div>

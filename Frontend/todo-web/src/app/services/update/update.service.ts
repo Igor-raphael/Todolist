@@ -12,7 +12,6 @@ export class UpdateService {
   private readonly API = "/todos";
 
   update(id: number, tarefas: Tarefas){
-
    return this.httpClient.put<Tarefas>(`${this.API}/${id}`, tarefas);
 
   }

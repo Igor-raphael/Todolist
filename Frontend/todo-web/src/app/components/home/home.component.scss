@@ -226,6 +226,24 @@
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
+.skeleton{
+  width: 90%;
+  height: 60px;
+  border-radius: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,.1),
+    rgba(255,255,255,.25),
+    rgba(255,255,255,.1)
+  );
+  animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse{
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+
 @media (min-width: 700px) {
   #home {
     background-image: url("/assets/landscape2.jpg");
