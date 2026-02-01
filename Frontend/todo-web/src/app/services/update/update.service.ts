@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Tarefas } from '../../model/tarefas';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class UpdateService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private readonly API = "/todos";
+  private readonly API = environment.apiUrl;
 
   update(id: number, tarefas: Tarefas){
    return this.httpClient.put<Tarefas>(`${this.API}/${id}`, tarefas);

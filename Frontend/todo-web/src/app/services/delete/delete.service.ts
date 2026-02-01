@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class DeleteService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private readonly API = '/todos';
+  private readonly API = environment.apiUrl;
 
   delete(id: number){
 
