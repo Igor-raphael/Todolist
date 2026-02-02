@@ -12,7 +12,7 @@ public class CorsConfig implements WebMvcConfigurer {
 		registry.addMapping("/**")
 			.allowedOrigins(
 					"http://localhost:4200",
-	                "https://seu-app.vercel.app"
+	                "https://flowlist-gilt.vercel.app"
 					)
 			.allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
 			.allowedHeaders("*")
