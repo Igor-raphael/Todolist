@@ -6,7 +6,7 @@
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 100vh;
+  min-height: 100dvh;
   padding-bottom: 3rem;
 
   -webkit-tap-highlight-color: transparent;
@@ -193,8 +193,8 @@
 }
 
 .btn {
-  position: absolute;
-  top: 90vh;
+  position: fixed;
+  bottom: calc(25px + env(safe-area-inset-bottom));
   right: 5vw;
 
   width: 50px;
