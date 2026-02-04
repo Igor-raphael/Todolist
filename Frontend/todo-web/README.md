@@ -1,7 +1,13 @@
-# Todo Web (Frontend)
+<h1 align="center">
+Todo Web (Frontend)
+</h1>
 
-Aplicação frontend de **Todo List** construída com **Angular 19**.  
+<p align="center">
+  Aplicação frontend de <strong>Todo List</strong> construída com <strong>Angular 19</strong>.  
 Consome a API do backend (Spring Boot) para listar, criar, editar, deletar e marcar tarefas como concluídas.
+</p>
+
+
 
 ---
 
@@ -49,6 +55,8 @@ npm install
 ```bash
 ng serve -o
 ``` 
+
+---
 
 ## 🔌 Integração com Backend (Proxy)
 
@@ -100,6 +108,8 @@ serão redirecionadas para o backend em ``` localhost:8080. ```
 
 - DELETE /todos/{id} → remove tarefa
 
+---
+
 ## 🗂️ Estrutura (resumo)
 
 - ```src/app/services/``` → serviços HTTP (list/create/update/delete)
@@ -110,6 +120,7 @@ serão redirecionadas para o backend em ``` localhost:8080. ```
 
 - ```src/environments/``` → configuração de URLs e comportamentos por ambiente.
 
+---
 
 ## 📌 Observações
 
@@ -118,6 +129,8 @@ serão redirecionadas para o backend em ``` localhost:8080. ```
 - O frontend envia DTOs sem ```id``` para criação.
 
 - Para update parcial, o status ```realizado``` é tratado em rota separada.
+
+---
 
 ## 📷 Preview
 
@@ -135,6 +148,8 @@ serão redirecionadas para o backend em ``` localhost:8080. ```
 
   ### Expansão de conteúdo
   ![Lista-Expandida](public/assets/previews/list02.png)
+
+---
 
 ## 👤 Autor
 
