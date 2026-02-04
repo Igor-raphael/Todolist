@@ -123,12 +123,37 @@ PUT /todos/{id}
 PUT /todos/1
 ```
 
-🔹 Listar todas as tarefas
-```bash
-http://localhost:8080/todos
+**Body (json)**
+```json
+{
+  "nome": "Estudar Java Avançado",
+  "descricao": "Streams, Lambdas e Optional",
+  "prioridade": 2
+}
 ```
 
-🔹 Listar todas as tarefas
+🔹 **Marcar tarefa como realizada ou não**
 ```bash
-http://localhost:8080/todos
+ PATH /todos/{id}/{realizado}
+```
+
+**Exemplos**
+
+```bash
+PATCH /todos/1/true
+```
+
+```bash
+PATCH /todos/1/false
+```
+
+
+🔹 **Remover uma tarefa**
+```bash
+DELETE /todos/{id}
+```
+
+**Exemplo**
+```bash
+DELETE /todos/1
 ```
