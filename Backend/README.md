@@ -93,7 +93,7 @@ http://localhost:8080/todos
     "id": 1,
     "nome": "Estudar Spring",
     "descricao": "Estudar JPA e Hibernate",
-    "prioridade": 1,
+    "prioridade": "Baixa",
     "realizado": false
   }
 ]
@@ -109,7 +109,7 @@ http://localhost:8080/todos
 {
   "nome": "Estudar Java",
   "descricao": "Revisar Streams API",
-  "prioridade": 1
+  "prioridade": "Média"
 }
 ```
 
@@ -128,7 +128,7 @@ PUT /todos/1
 {
   "nome": "Estudar Java Avançado",
   "descricao": "Streams, Lambdas e Optional",
-  "prioridade": 2
+  "prioridade": "Alta"
 }
 ```
 
@@ -157,3 +157,28 @@ DELETE /todos/{id}
 ```bash
 DELETE /todos/1
 ```
+
+## 🧪 Testes
+
+O projeto conta com testes unitários focados na camada de serviço, utilizando:
+
+- JUnit 5
+
+- Mockito
+
+Os testes validam:
+
+- Fluxos de sucesso
+
+- Regras de negócio
+
+- Tratamento de exceções
+
+## 📄 Observações
+
+- O campo ```id``` é gerado automaticamente e utilizado apenas para busca e identificação das tarefas.
+
+- A API segue o padrão REST, com respostas claras e códigos HTTP adequados.
+
+## Autor
+**Igor Rafael**
