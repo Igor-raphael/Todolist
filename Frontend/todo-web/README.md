@@ -1,59 +1,141 @@
-# TodoWeb
+# Todo Web (Frontend)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+Aplicação frontend de **Todo List** construída com **Angular 19**.  
+Consome a API do backend (Spring Boot) para listar, criar, editar, deletar e marcar tarefas como concluídas.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✨ Funcionalidades
 
-```bash
-ng serve
-```
+- Listagem de tarefas
+- Criação de nova tarefa (modal)
+- Edição de tarefa (modal preenchido com dados atuais)
+- Exclusão por `id`
+- Marcar/desmarcar como concluída (`realizado`)
+- Indicador visual de **prioridade** (Baixa / Média / Alta)
+- Loading com **Skeleton** quando a API estiver lenta
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🧱 Tecnologias
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Angular 19**
+- **TypeScript**
+- **RxJS**
+- **Template-driven Forms** (`NgForm`)
+- **HTTP Client**
+- **SCSS**
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## ✅ Pré-requisitos
 
-```bash
-ng generate --help
-```
+- Node.js (recomendado LTS)
+- Angular CLI
+- Backend rodando localmente em `http://localhost:8080`
 
-## Building
+---
 
-To build the project run:
+## ▶️ Como rodar o projeto
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### 1) Instalar dependências
 
 ```bash
-ng e2e
+npm install
+``` 
+
+### 2) Rodar em desenvolvimento
+
+```bash
+ng serve -o
+``` 
+
+## 🔌 Integração com Backend (Proxy)
+
+Para evitar problemas de CORS em desenvolvimento, use proxy.
+
+### 1) **Crie o arquivo** proxy.config.json **(na raiz do projeto)**
+
+```json
+{
+  "/todos": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
+
+``` 
+
+### 2) Suba o Angular com o proxy 
+
+```bash
+ng serve -o --proxy-config proxy.config.json
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+A partir disso, requisições como:
 
-## Additional Resources
+- GET /todos
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- POST /todos/create
+
+- PUT /todos/{id}
+
+- PATCH /todos/{id}/realizado
+
+- DELETE /todos/{id}
+
+serão redirecionadas para o backend em ``` localhost:8080. ```
+
+### 📡 Endpoints esperados (Backend)
+
+- GET /todos → lista tarefas
+
+- POST /todos/create → cria tarefa 
+
+- PUT /todos/{id} → atualiza dados (nome/descrição/prioridade)
+
+- PUT /todos/{id}/realizado → atualiza status { "realizado": true/false }
+
+- DELETE /todos/{id} → remove tarefa
+
+## 🗂️ Estrutura (resumo)
+
+- ```src/app/services/``` → serviços HTTP (list/create/update/delete)
+
+- ```src/app/model/``` → interfaces/DTOs (ex.: Todo, TodoCreateDTO)
+
+- ```src/app/components/``` → componentes (Home, Modal, etc.)
+
+- ```src/environments/``` → configuração de URLs e comportamentos por ambiente.
+
+
+## 📌 Observações
+
+- O ```id``` é gerado pelo backend/banco.
+
+- O frontend envia DTOs sem ```id``` para criação.
+
+- Para update parcial, o status ```realizado``` é tratado em rota separada.
+
+## 📷 Preview
+
+### Tela principal
+  ![Home] (previews/Home.png)
+
+### Criar tarefas
+  ![Modal-Create] (previews/create.png)
+
+### Lista de tarefas
+  ![Lista] (previews/list.png)
+
+  ### Alterar tarefas
+  ![Modal-Update] (previews/update.png)
+
+  ### Expansão de conteúdo
+  ![Lista-Expandida] (previews/list02.png)
+
+## 👤 Autor
+
+ **Igor Rafael**
