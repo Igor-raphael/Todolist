@@ -122,19 +122,19 @@ serão redirecionadas para o backend em ``` localhost:8080. ```
 ## 📷 Preview
 
 ### Tela principal
-  ![Home] (previews/Home.png)
+  ![Home] (assets/previews/Home.png)
 
 ### Criar tarefas
-  ![Modal-Create] (previews/create.png)
+  ![Modal-Create] (assets/previews/create.png)
 
 ### Lista de tarefas
-  ![Lista] (previews/list.png)
+  ![Lista] (assets/previews/list.png)
 
   ### Alterar tarefas
-  ![Modal-Update] (previews/update.png)
+  ![Modal-Update] (assets/previews/update.png)
 
   ### Expansão de conteúdo
-  ![Lista-Expandida] (previews/list02.png)
+  ![Lista-Expandida] (assets/previews/list02.png)
 
 ## 👤 Autor
 
