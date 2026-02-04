@@ -2,7 +2,9 @@
   TODO List API
 </h1>
 
+<p align="center">
 API REST para gerenciamento de tarefas (CRUD), permitindo criar, listar, atualizar, marcar como concluída e remover tarefas.
+</p>
 
 ---
 
@@ -72,15 +74,15 @@ java -jar target/todolist-0.0.1-SNAPSHOT.jar
 - Swagger (Documentação):
 👉 http://localhost:8080/swagger-ui.html
 
+---
 
 ## 📡 Endpoints da API
 
-Base URL:
+**Base URL:**
 ```bash
 http://localhost:8080/todos
 ```
-
-
+<br></br>
 🔹 **Listar todas as tarefas**
 ```bash
   GET /todos
@@ -99,7 +101,7 @@ http://localhost:8080/todos
 ]
 ```
 
-
+<br></br>
 🔹 **Criar tarefas**
 ```bash
  POST /todos/create
@@ -112,7 +114,7 @@ http://localhost:8080/todos
   "prioridade": "Média"
 }
 ```
-
+<br></br>
 🔹 **Atualizar uma tarefa**
 ```bash
 PUT /todos/{id}
@@ -131,7 +133,7 @@ PUT /todos/1
   "prioridade": "Alta"
 }
 ```
-
+<br></br>
 🔹 **Marcar tarefa como realizada ou não**
 ```bash
  PATH /todos/{id}/{realizado}
@@ -146,8 +148,7 @@ PATCH /todos/1/true
 ```bash
 PATCH /todos/1/false
 ```
-
-
+<br></br>
 🔹 **Remover uma tarefa**
 ```bash
 DELETE /todos/{id}
@@ -157,6 +158,8 @@ DELETE /todos/{id}
 ```bash
 DELETE /todos/1
 ```
+
+---
 
 ## 🧪 Testes
 
@@ -174,11 +177,15 @@ Os testes validam:
 
 - Tratamento de exceções
 
+---
+
 ## 📄 Observações
 
 - O campo ```id``` é gerado automaticamente e utilizado apenas para busca e identificação das tarefas.
 
 - A API segue o padrão REST, com respostas claras e códigos HTTP adequados.
+
+---
 
 ## Autor
 **Igor Rafael**
