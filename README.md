@@ -20,6 +20,8 @@ Este projeto foi pensado tanto como **estudo prático** quanto como **portfólio
 
 ## 🧩 Arquitetura Geral
 
+<img width="970" height="397" alt="Relação" src="https://github.com/user-attachments/assets/9b9b4f04-b582-4c64-81a8-cc068ead7815" />
+
 - O **Angular** é responsável pela interface, experiência do usuário e consumo da API.
 - O **Java(Spring Boot)** expõe uma API REST responsável por toda a regra de negócio.
 - A comunicação ocorre via **HTTP com JSON**.
@@ -47,6 +49,26 @@ Este projeto foi pensado tanto como **estudo prático** quanto como **portfólio
 - PostgreSQL
 
 ---
+
+## 📷 Preview
+
+### Tela principal
+  ![Home](Frontend/todo-web/public/assets/previews/Home.png)
+
+### Criar tarefas
+  ![Modal-Create](Frontend/todo-web/public/assets/previews/create.png)
+
+### Lista de tarefas
+  ![Lista](Frontend/todo-web/public/assets/previews/list.png)
+
+### Alterar tarefas
+  ![Modal-Update](Frontend/todo-web/public/assets/previews/update.png)
+
+### Expansão de conteúdo
+  ![Lista-Expandida](Frontend/todo-web/public/assets/previews/list02.png)
+
+
+
 
 ## 📐 Boas Práticas Adotadas
 
