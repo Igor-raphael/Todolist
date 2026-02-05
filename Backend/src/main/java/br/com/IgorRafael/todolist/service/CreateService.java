@@ -14,10 +14,10 @@ private final TodoRepository todoRepository;
 		this.todoRepository = todoRepository;
 	}
 	
-	public Todo create(Todo todo) {
+	public Todo create(String clientID, Todo todo) {
+		todo.setClientID(clientID);
 		todoRepository.save(todo);
 		return todo;
-		
 	}
 	
 }

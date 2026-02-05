@@ -15,9 +15,9 @@ public class DeleteService {
 	}
 	
 	
-	public void delete(Integer id) {
+	public void delete(String clientID, Integer id) {
 		
-		todoRepository.findById(id).ifPresentOrElse(ExisteOTodo -> {
+		todoRepository.findByClientIDAndId(clientID, id).ifPresentOrElse(ExisteOTodo -> {
 			todoRepository.delete(ExisteOTodo);
 			
 		}, () -> {

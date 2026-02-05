@@ -16,9 +16,9 @@ public class UpdateService {
 	}
 	
 	
-		public Todo update(Integer id, Todo todo){
+		public Todo update(String clientID, Integer id, Todo todo){
 		
-		Todo Existe = todoRepository.findById(id).orElseThrow(() -> new BadRequestException("A tarefa de número: %d, não existe! ".formatted(id)));
+		Todo Existe = todoRepository.findByClientIDAndId(clientID, id).orElseThrow(() -> new BadRequestException("A tarefa de número: %d, não existe! ".formatted(id)));
 			
 			Existe.setNome(todo.getNome());
 			Existe.setDescricao(todo.getDescricao());
@@ -28,9 +28,9 @@ public class UpdateService {
 		
 	}
 		
-		public void check(Integer id, boolean realizado) {
+		public void check(String clientID, Integer id, boolean realizado) {
 			
-			Todo Existe = todoRepository.findById(id).orElseThrow(() -> new BadRequestException("A tarefa de número: %d, não existe! ".formatted(id)));
+			Todo Existe = todoRepository.findByClientIDAndId(clientID, id).orElseThrow(() -> new BadRequestException("A tarefa de número: %d, não existe! ".formatted(id)));
 			
 			Existe.setRealizado(realizado);
 			

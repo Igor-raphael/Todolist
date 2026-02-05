@@ -21,24 +21,24 @@ public class TodoServiceCentral {
 		this.deleteService = deleteService;
 	}
 	
-	public List<Todo> listTodo(){
-		return listService.list();
+	public List<Todo> listTodo(String clientID){
+		return listService.list(clientID);
 	}
 	
-	public Todo create(Todo todo){
-		return createService.create(todo);
+	public Todo create(String clientID, Todo todo){
+		return createService.create( clientID, todo);
 	}
 		
-	public Todo update (Integer id, Todo todo) {
-		return updateService.update(id, todo);
+	public Todo update (String clientID, Integer id, Todo todo) {
+		return updateService.update(clientID, id, todo);
 	}
 	
-	public void checkUpdate(Integer id, boolean realizado ) {
-		updateService.check(id, realizado);
+	public void checkUpdate(String clientID, Integer id, boolean realizado ) {
+		updateService.check(clientID, id, realizado);
 	}
 	
-	public void delete(Integer id){
-		 deleteService.delete(id);
+	public void delete(String clientID, Integer id){
+		 deleteService.delete(clientID, id);
 	}
 	
 	

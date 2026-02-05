@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.IgorRafael.todolist.entity.Enum.Prioridade;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +18,9 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "todo")
 public class Todo {
 	
+	
+	@Column(nullable = false, length = 36)
+	private String clientID;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,6 +71,10 @@ public class Todo {
 	}
 	
 	
+	public void setClientID(String clientID) {
+		this.clientID = clientID;
+	}
+
 	public Integer getId() {
 		return id;
 	}
