@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -88,30 +89,32 @@ public class TodoController {
 	
 	@Operation(summary = "Cria tarefa")
 	@PostMapping(path = "/create")
-	Todo create(@Valid @RequestBody Todo todo){
-		return todoService.create(todo);
+	Todo create(@RequestHeader("X-Client-Id") String clientID, @Valid @RequestBody Todo todo){
+		return todoService.create(clientID, todo);
 	}	 
 	
 	
 	@Operation(summary = "Lista todas as terafas disponíveis.")
 	@GetMapping
-	List<Todo> list(){
-		return todoService.listTodo() ;
+	
+	List<Todo> list(@RequestHeader("X-Client-Id") String clientID){
+		return todoService.listTodo(clientID) ;
 	}
 	
 
 	@Operation(summary = "Altera a tarefa selecionada.")
 	@PutMapping(path ="/{id}")
-    Todo update(@PathVariable("id") Integer id, @Valid @RequestBody Todo todo){
-    	return todoService.update(id, todo);
+    Todo update(@RequestHeader("X-Client-Id") String clientID, @PathVariable("id") Integer id, @Valid @RequestBody Todo todo){
+    	return todoService.update(clientID, id, todo);
     }
+	
 	
 	@Operation(summary = "Altera a conclusão da tarefa selecionada.")
 	@PutMapping(path = "/{id}/realizado")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	void updateCheck(@PathVariable("id") Integer id, @RequestBody Map<String, Boolean> body) {
+	void updateCheck(@RequestHeader("X-Client-Id") String clientID , @PathVariable("id") Integer id, @RequestBody Map<String, Boolean> body) {
 		
-		todoService.checkUpdate(id, body.get("realizado"));
+		todoService.checkUpdate(clientID, id, body.get("realizado"));
 		
 	}
 	
@@ -119,8 +122,8 @@ public class TodoController {
 	@Operation(summary = "Deleta a tarefa selecionada.")
     @DeleteMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") Integer id){
-	   todoService.delete(id);
+    public void delete(@RequestHeader("X-Client-Id") String clientID,  @PathVariable("id") Integer id){
+	   todoService.delete(clientID, id);
     }
     
 }
