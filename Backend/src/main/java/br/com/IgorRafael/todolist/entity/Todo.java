@@ -75,6 +75,10 @@ public class Todo {
 		this.clientID = clientID;
 	}
 
+	public String getClientID() {
+		return clientID;
+	}
+
 	public Integer getId() {
 		return id;
 	}

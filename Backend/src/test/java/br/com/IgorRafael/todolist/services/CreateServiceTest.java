@@ -28,9 +28,11 @@ public class CreateServiceTest {
 	CreateService createService;
 	
 	Todo todo;
+	String clientID = "po09";
 	
 	@BeforeEach
 	 void SetUp() {
+		
 		
 		todo = new Todo();
 		
@@ -48,10 +50,11 @@ public class CreateServiceTest {
 		
 		when(repository.save(todo)).thenReturn(todo);
 		
-		Todo result = createService.create(todo);
+		Todo result = createService.create(clientID, todo);
 		
 		
 		assertNotNull(result);
+		assertEquals("po09", result.getClientID());
 		assertEquals("Concluir Pokemon Esmerald", result.getNome());
 		assertEquals("Nostalgia.", result.getDescricao());
 		assertEquals(false, result.isRealizado());

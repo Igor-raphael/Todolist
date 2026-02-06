@@ -19,7 +19,7 @@ private final TodoRepository todoRepository;
 	
 	
 	public List<Todo> list(String clientID){
-		Sort sort = Sort.by("prioridade").descending().and(Sort.by("nome").ascending());
+		Sort sort = Sort.by("prioridade").descending().and(Sort.by("nome").ascending()).and(Sort.by("realizado").ascending());
 		return todoRepository.findByClientID(clientID, sort);
 	}
 	

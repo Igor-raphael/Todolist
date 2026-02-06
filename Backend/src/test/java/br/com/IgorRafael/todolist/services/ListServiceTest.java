@@ -32,6 +32,9 @@ public class ListServiceTest {
 	ListService listService;
 	
 	Todo todo, todo1 ,todo2;
+	String clientID = "C01";
+	String clientID2 = "C02";
+	
 	
 	@BeforeEach
 	void SetUp() {
@@ -40,19 +43,22 @@ public class ListServiceTest {
 		todo1 = new Todo();
 		todo2 = new Todo();
 		
+		todo.setClientID(clientID);
 		todo.setNome("Concluir Pokemon Esmerald");
 		todo.setDescricao("Nostalgia.");
 		todo.setRealizado(false);
 		todo.setPrioridade(Prioridade.ALTA);
 		
+		todo1.setClientID(clientID);
 		todo1.setNome("Concluir Pokemon Y");
 		todo1.setDescricao("80%");
-		todo1.setRealizado(false);
+		todo1.setRealizado(true);
 		todo1.setPrioridade(Prioridade.BAIXA);
 		
+		todo2.setClientID(clientID2);
 		todo2.setNome("Concluir Pokemon Sun");
 		todo2.setDescricao("20%");
-		todo2.setRealizado(false);
+		todo2.setRealizado(true);
 		todo2.setPrioridade(Prioridade.MEDIA);
 		
 	}
@@ -64,42 +70,37 @@ public class ListServiceTest {
 		List<Todo> tarefas = List.of(
 				
 				todo,
-				todo2,
 				todo1
 		);
 		
 		
-		Sort sort = Sort.by("prioridade").descending().and(Sort.by("nome").ascending());
+		Sort sort = Sort.by("prioridade").descending().and(Sort.by("nome").ascending()).and(Sort.by("realizado").ascending());
 
 		
-		when(repository.findAll(sort)).thenReturn(tarefas);
+		when(repository.findByClientID("C01", sort)).thenReturn(tarefas);
 		
-		List<Todo> result = listService.list();
+		List<Todo> result = listService.list("C01");
 		
 		
 		assertNotNull(result);
-		assertEquals(3, result.size());
+		assertEquals(2, result.size());
 
 		// Primeiro elemento
+		assertEquals("C01", result.get(0).getClientID());
 		assertEquals("Concluir Pokemon Esmerald", result.get(0).getNome());
 		assertEquals("Nostalgia.", result.get(0).getDescricao());
 		assertFalse(result.get(0).isRealizado());
 		assertEquals(Prioridade.ALTA, result.get(0).getPrioridade());
 
 		// Segundo elemento
-		assertEquals("Concluir Pokemon Sun", result.get(1).getNome());
-		assertEquals("20%", result.get(1).getDescricao());
-		assertFalse(result.get(1).isRealizado());
-		assertEquals(Prioridade.MEDIA, result.get(1).getPrioridade());
-
-		// Terceiro elemento
-		assertEquals("Concluir Pokemon Y", result.get(2).getNome());
-		assertEquals("80%", result.get(2).getDescricao());
-		assertFalse(result.get(2).isRealizado());
-		assertEquals(Prioridade.BAIXA, result.get(2).getPrioridade());
+		assertEquals("C01", result.get(1).getClientID());
+		assertEquals("Concluir Pokemon Y", result.get(1).getNome());
+		assertEquals("80%", result.get(1).getDescricao());
+		assertTrue(result.get(1).isRealizado());
+		assertEquals(Prioridade.BAIXA, result.get(1).getPrioridade());
 
 		
-		verify(repository, times(1)).findAll(sort);
+		verify(repository, times(1)).findByClientID("C01", sort);
 		
 		
 	}

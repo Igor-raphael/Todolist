@@ -36,6 +36,10 @@ public class DeleteServiceTest {
 	DeleteService deleteService;
 	
 	Todo todo, todo1 ,todo2;
+	String clientID = "C01";
+	String clientID2 = "C02";
+	String clientID3 = "C03";
+	
 	
 	@BeforeEach
 	void SetUp() {
@@ -45,18 +49,21 @@ public class DeleteServiceTest {
 		todo2 = new Todo();
 		
 		todo.setId(2);
+		todo.setClientID(clientID);
 		todo.setNome("Concluir Pokemon Esmerald");
 		todo.setDescricao("Nostalgia.");
 		todo.setRealizado(false);
 		todo.setPrioridade(Prioridade.ALTA);
 		
 		todo1.setId(3);
+		todo1.setClientID(clientID2);
 		todo1.setNome("Concluir Pokemon Y");
 		todo1.setDescricao("80%");
 		todo1.setRealizado(false);
 		todo1.setPrioridade(Prioridade.BAIXA);
 		
 		todo2.setId(1);
+		todo2.setClientID(clientID3);
 		todo2.setNome("Concluir Pokemon Sun");
 		todo2.setDescricao("20%");
 		todo2.setRealizado(false);
@@ -79,7 +86,7 @@ public class DeleteServiceTest {
 				todo1
 		));
 		
-		when(todoRepository.findById(id)).thenReturn(Optional.of(tarefas.get(2)));
+		when(todoRepository.findByClientIDAndId("C02", id)).thenReturn(Optional.of(tarefas.get(2)));
 		
 		doAnswer(invocation -> {
 			
@@ -91,13 +98,17 @@ public class DeleteServiceTest {
 			
 		}).when(todoRepository).delete(any(Todo.class));
 		
-		deleteService.delete(id);
+		deleteService.delete("C02" ,id);
 		
 		assertEquals(2, tarefas.size());
-		assertEquals("Concluir Pokemon Esmerald", tarefas.get(0).getNome());
-		assertEquals("Concluir Pokemon Sun", tarefas.get(1).getNome());
 		
-		verify(todoRepository, times(1)).findById(id);
+		assertEquals("Concluir Pokemon Esmerald", tarefas.get(0).getNome());
+		assertEquals("C01", tarefas.get(0).getClientID());
+		
+		assertEquals("Concluir Pokemon Sun", tarefas.get(1).getNome());
+		assertEquals("C03", tarefas.get(1).getClientID());
+		
+		verify(todoRepository, times(1)).findByClientIDAndId("C02", id);
 		verify(todoRepository, times(1)).delete(any(Todo.class));
 	}
 	
@@ -115,11 +126,11 @@ public class DeleteServiceTest {
 				todo1
 		));
 			
-			when(todoRepository.findById(id)).thenReturn(Optional.empty());
+			when(todoRepository.findByClientIDAndId("C04", id)).thenReturn(Optional.empty());
 			
 			BadRequestException thrown = Assertions.assertThrows(BadRequestException.class, () -> {
 				
-				deleteService.delete(id);
+				deleteService.delete("C04", id);
 				
 				
 			});
@@ -127,7 +138,7 @@ public class DeleteServiceTest {
 			Assertions.assertEquals("A tarefa de número: %d, não pode ser excluída pois ela não existe!".formatted(id), thrown.getMessage());
 			
 			assertEquals(3, tarefas.size());
-			verify(todoRepository, times(1)).findById(id);
+			verify(todoRepository, times(1)).findByClientIDAndId("C04", id);
 		
 	}
 	

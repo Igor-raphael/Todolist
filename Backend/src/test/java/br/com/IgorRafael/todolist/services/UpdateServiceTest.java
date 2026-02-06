@@ -38,15 +38,18 @@ public class UpdateServiceTest {
 	@DisplayName("Test de alteração de tarefa com sucesso.")
 	void UpdateServiceTestSucess() {
 		
+		
 		Todo todo = new Todo();
 		
 		Todo newTodo = new Todo();
+		
 		
 		todo.setNome("Concluir Pokemon Y");
 		todo.setDescricao("80%");
 		todo.setRealizado(false);
 		todo.setPrioridade(Prioridade.BAIXA);
 		
+		String clientID = "C01";
 		Integer id = 1;
 		
 		newTodo.setNome("Concluir Pokemon Y");
@@ -54,11 +57,11 @@ public class UpdateServiceTest {
 		newTodo.setRealizado(true);
 		newTodo.setPrioridade(Prioridade.BAIXA);
 		
-		when(todoRepository.findById(id)).thenReturn(Optional.of(todo));
+		when(todoRepository.findByClientIDAndId(clientID, id)).thenReturn(Optional.of(todo));
 		
 		when(todoRepository.save(todo)).thenReturn(newTodo);
 		
-		Todo result = updateService.update(id, newTodo);
+		Todo result = updateService.update(clientID, id, newTodo);
 		
 		
 		assertEquals(newTodo.getNome(), result.getNome());
@@ -66,7 +69,7 @@ public class UpdateServiceTest {
 		assertEquals(newTodo.isRealizado(), result.isRealizado());
 		assertEquals(newTodo.getPrioridade(), result.getPrioridade());
 		
-		verify(todoRepository, times(1)).findById(id);
+		verify(todoRepository, times(1)).findByClientIDAndId(clientID, id);
 		verify(todoRepository, times(1)).save(todo);
 		
 		
@@ -93,14 +96,14 @@ public class UpdateServiceTest {
 		newTodo.setPrioridade(Prioridade.BAIXA);
 		
 		Integer id = 45;
+		String clientID = "C01";
 		
-		
-			when(todoRepository.findById(id)).thenReturn(Optional.empty());
+			when(todoRepository.findByClientIDAndId(clientID ,id)).thenReturn(Optional.empty());
 			
 			BadRequestException thrown = Assertions.assertThrows(BadRequestException.class, () -> {
 				
 				
-				Todo result = updateService.update(id, newTodo);
+				Todo result = updateService.update(clientID, id, newTodo);
 				
 				
 			});
@@ -108,7 +111,7 @@ public class UpdateServiceTest {
 			Assertions.assertEquals("A tarefa de número: %d, não existe! ".formatted(id), thrown.getMessage());
 			
 			
-			verify(todoRepository, times(1)).findById(id);
+			verify(todoRepository, times(1)).findByClientIDAndId(clientID, id);
 		
 	}
 	
