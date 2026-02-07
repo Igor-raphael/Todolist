@@ -22,34 +22,29 @@ public class TodoServiceCentral {
 		this.deleteService = deleteService;
 	}
 	
-	private void validateClientId(String clientID) {
+	public void validateClientId(String clientID) {
 		if (clientID == null || clientID.isBlank()) {
 			   throw new BadRequestException("X-Client-Id obrigatório");
 			}
 	}
 	
 	public List<Todo> listTodo(String clientID){
-		validateClientId(clientID);
 		return listService.list(clientID);
 	}
 	
 	public Todo create(String clientID, Todo todo){
-		validateClientId(clientID);
 		return createService.create( clientID, todo);
 	}
 		
 	public Todo update (String clientID, Integer id, Todo todo) {
-		validateClientId(clientID);
 		return updateService.update(clientID, id, todo);
 	}
 	
 	public void checkUpdate(String clientID, Integer id, boolean realizado ) {
-		validateClientId(clientID);
 		updateService.check(clientID, id, realizado);
 	}
 	
 	public void delete(String clientID, Integer id){
-		validateClientId(clientID);
 		 deleteService.delete(clientID, id);
 	}
 	
