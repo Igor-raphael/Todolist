@@ -101,16 +101,13 @@ public class TodoController {
 	@Operation(summary = "Cria tarefa")
 	@PostMapping(path = "/create")
 	Todo create(@RequestHeader("X-Client-Id") String clientID, @Valid @RequestBody Todo todo){
-				todoService.validateClientId(clientID);
 		return todoService.create(clientID, todo);
 	}	 
 	
 	
 	@Operation(summary = "Lista todas as terafas disponíveis.")
 	@GetMapping
-	
 	List<Todo> list(@RequestHeader("X-Client-Id") String clientID){
-		todoService.validateClientId(clientID);
 		return todoService.listTodo(clientID) ;
 	}
 	
@@ -118,7 +115,6 @@ public class TodoController {
 	@Operation(summary = "Altera a tarefa selecionada.")
 	@PutMapping(path ="/{id}")
     Todo update(@RequestHeader("X-Client-Id") String clientID, @PathVariable("id") Integer id, @Valid @RequestBody Todo todo){
-		todoService.validateClientId(clientID);
     	return todoService.update(clientID, id, todo);
     }
 	
@@ -127,7 +123,6 @@ public class TodoController {
 	@PutMapping(path = "/{id}/realizado")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	void updateCheck(@RequestHeader("X-Client-Id") String clientID , @PathVariable("id") Integer id, @RequestBody Map<String, Boolean> body) {
-		todoService.validateClientId(clientID);
 		todoService.checkUpdate(clientID, id, body.get("realizado"));
 		
 	}
@@ -137,7 +132,6 @@ public class TodoController {
     @DeleteMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@RequestHeader("X-Client-Id") String clientID,  @PathVariable("id") Integer id){
-		todoService.validateClientId(clientID);
 	   todoService.delete(clientID, id);
     }
     

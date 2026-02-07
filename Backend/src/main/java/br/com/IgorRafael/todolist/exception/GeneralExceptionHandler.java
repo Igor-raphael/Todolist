@@ -34,6 +34,7 @@ public class GeneralExceptionHandler {
 								));
 			}
 			
+			
 			@ExceptionHandler(Exception.class)
 			private ResponseEntity<ErrorResponse> handleGeneralException(Exception ex){
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(

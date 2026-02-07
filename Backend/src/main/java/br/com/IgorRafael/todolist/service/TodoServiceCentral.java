@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import br.com.IgorRafael.todolist.entity.Todo;
-import br.com.IgorRafael.todolist.exception.BadRequestException;
+
 
 @Component
 public class TodoServiceCentral {
@@ -20,12 +20,6 @@ public class TodoServiceCentral {
 		this.createService = createService;
 		this.updateService = updateService;
 		this.deleteService = deleteService;
-	}
-	
-	public void validateClientId(String clientID) {
-		if (clientID == null || clientID.isBlank()) {
-			   throw new BadRequestException("X-Client-Id obrigatório");
-			}
 	}
 	
 	public List<Todo> listTodo(String clientID){
