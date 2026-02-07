@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.IgorRafael.todolist.entity.Todo;
 
-
 @Component
 public class TodoServiceCentral {
 	
@@ -14,12 +13,18 @@ public class TodoServiceCentral {
 	private final CreateService createService;
 	private final UpdateService updateService;
 	private final DeleteService deleteService;
+	private final DBAtivo ativo;
 	
-	public TodoServiceCentral(ListService listService, CreateService createService, UpdateService updateService, DeleteService deleteService) {
+	public TodoServiceCentral(ListService listService, CreateService createService, UpdateService updateService, DeleteService deleteService, DBAtivo ativo) {
 		this.listService = listService;
 		this.createService = createService;
 		this.updateService = updateService;
 		this.deleteService = deleteService;
+		this.ativo = ativo;
+	}
+	
+	public void ping() {
+		ativo.dbAtivo();
 	}
 	
 	public List<Todo> listTodo(String clientID){

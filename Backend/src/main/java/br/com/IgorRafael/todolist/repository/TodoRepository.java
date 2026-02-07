@@ -5,10 +5,15 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import br.com.IgorRafael.todolist.entity.Todo;
 
 public interface TodoRepository extends JpaRepository<Todo, Integer>{
+	
+	@Query(value = "SELECT 1", nativeQuery = true)
+	Integer ping();
+
 	
 	List<Todo> findByClientID(String clientId, Sort sort);
 	

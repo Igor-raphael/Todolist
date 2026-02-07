@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.IgorRafael.todolist.entity.Todo;
 import br.com.IgorRafael.todolist.service.TodoServiceCentral;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -90,11 +92,11 @@ public class TodoController {
 		
 	}
 	
-	@Operation(summary = "Rota criada para ativação do cron job.")
+	@Hidden
 	@GetMapping(path = "/cron")
-	String cron() {
-		return "CRON-JOB ON";
-		
+	public ResponseEntity<Void> cron() {
+		todoService.ping();
+		return ResponseEntity.ok().build();
 	}
 	
 	
