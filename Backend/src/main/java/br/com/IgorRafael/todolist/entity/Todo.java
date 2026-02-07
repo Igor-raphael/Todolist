@@ -19,7 +19,7 @@ import jakarta.validation.constraints.NotNull;
 public class Todo {
 	
 	
-	@Column(nullable = false, length = 36)
+	@Column(nullable = false, name = "clientid", length = 36)
 	private String clientID;
 	
 	@Id
