@@ -38,10 +38,6 @@ public class HeaderValidationFilter implements Filter {
 		      return;
 		    }
 		
-		
-		
-		
-		
 		if (customHeader == null || customHeader.isBlank()) {
 			   HttpServletResponse httpResponse = (HttpServletResponse) res;
 			   httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Header obrigatório ausente" );
