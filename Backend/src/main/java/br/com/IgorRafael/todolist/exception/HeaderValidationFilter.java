@@ -22,11 +22,18 @@ public class HeaderValidationFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) req;
 		
 		 String path = httpRequest.getRequestURI();
+		 String customHeader = httpRequest.getHeader("X-Client-Id");
+		 
+		 if ("OPTIONS".equalsIgnoreCase(httpRequest.getMethod())) {
+			  chain.doFilter(req, res);
+			  return;
+			}
 
 		    // Rotas que NÃO exigem X-Client-Id
 		    if (path.startsWith("/todos/cron")
 		        || path.startsWith("/swagger-ui")
-		        || path.startsWith("/v3/api-docs")) {
+		        || path.startsWith("/v3/api-docs")
+		    	|| path.equals("/favicon.ico")){
 		      chain.doFilter(req, res);
 		      return;
 		    }
@@ -34,7 +41,6 @@ public class HeaderValidationFilter implements Filter {
 		
 		
 		
-		String customHeader = httpRequest.getHeader("X-Client-Id");
 		
 		if (customHeader == null || customHeader.isBlank()) {
 			   HttpServletResponse httpResponse = (HttpServletResponse) res;
