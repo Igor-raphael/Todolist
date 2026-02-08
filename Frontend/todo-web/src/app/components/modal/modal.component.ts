@@ -29,7 +29,7 @@ export class ModalComponent {
   realizado: boolean = false;
 
   prioridades = {
-    prioridade: 'BAIXA' as 'BAIXA' | 'MEDIA' | 'ALTA',
+    prioridade: null as 'BAIXA' | 'MEDIA' | 'ALTA' | null,
   };
 
   @Output() reload = new EventEmitter<void>();
@@ -45,7 +45,7 @@ export class ModalComponent {
     this.EditID = null;
     this.tarefa = '';
     this.descricao = '';
-    this.prioridades.prioridade = 'BAIXA';
+    this.prioridades.prioridade = null;
     this.formToggle();
   }
 
@@ -60,6 +60,7 @@ export class ModalComponent {
 
   onSubmit(form: NgForm) {
     if (form.invalid) return;
+      if (this.prioridades.prioridade === null) return;
 
     if (this.EditID === null) {
       const payloadCreate: TarefaDTO = {
@@ -72,7 +73,7 @@ export class ModalComponent {
       this.createService.create(payloadCreate).subscribe({
         next: () => {
           this.reload.emit();
-          form.resetForm({ prioridade: 'BAIXA' });
+          form.resetForm({ prioridade: null });
           this.formToggle();
         },
       });

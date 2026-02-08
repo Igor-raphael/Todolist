@@ -10,6 +10,10 @@
   transform: translate(-50%, -50%);
   z-index: 11;
 
+  width: min(460px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+
   background: rgba(255, 255, 255, 0.60);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -40,7 +44,8 @@
 .overlay{
   position: fixed;
   z-index: 10;
-  height: 100vh;
+  inset: 0;
+  height: 100dvh;
   width: 100vw;
   left: 0;
   top: 0;

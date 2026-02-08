@@ -4,7 +4,7 @@
 
     <div class="field">
 
-      <label for="name">Nome da tarefa</label>
+      <label for="name">Nome da tarefa*</label>
       <input type="text" name="tarefa" [(ngModel)]="tarefa" maxlength="30" placeholder="Ex.: Estudar Docker." required>
 
     </div>
@@ -19,24 +19,24 @@
 
     <fieldset class="field">
 
-      <legend> Prioridade</legend>
+      <legend> Prioridade*</legend>
 
       <div class="radio-group">
 
         <label class="radio">
-          <input type="radio" name="prioridade" [(ngModel)]="prioridades.prioridade" value="BAIXA">
+          <input type="radio" name="prioridade" [(ngModel)]="prioridades.prioridade" value="BAIXA" required>
           <span class="radio-ui"></span>
           <span class="radio-text">Baixa</span>
         </label>
 
         <label class="radio">
-          <input type="radio" name="prioridade" [(ngModel)]="prioridades.prioridade" value="MEDIA">
+          <input type="radio" name="prioridade" [(ngModel)]="prioridades.prioridade" value="MEDIA" required>
           <span class="radio-ui"></span>
           <span class="radio-text">Média</span>
         </label>
 
         <label class="radio">
-          <input type="radio" name="prioridade" [(ngModel)]="prioridades.prioridade" value="ALTA">
+          <input type="radio" name="prioridade" [(ngModel)]="prioridades.prioridade" value="ALTA" required>
           <span class="radio-ui"></span>
           <span class="radio-text">Alta</span>
         </label>
