@@ -161,6 +161,22 @@ DELETE /todos/1
 
 ---
 
+## 🔎 Identificação de usuários
+
+Todas as rotas recebem em especial via @requestHeader, um código de identificação que é enviado direto do Front-End, para identificar quem seria o usuário sem necessita de um login formal.
+dessa forma o banco de dados associa as tarefas criada ao código e mantém uma separação clara entre usuários.
+
+Ex: 
+
+```java
+@GetMapping
+	List<Todo> list(@RequestHeader("X-Client-Id") String clientID){
+		return todoService.listTodo(clientID) ;
+	}
+```
+
+--- 
+
 ## 🧪 Testes
 
 O projeto conta com testes unitários focados na camada de serviço, utilizando:
